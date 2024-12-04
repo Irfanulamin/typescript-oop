@@ -134,4 +134,61 @@
 }
 
 {
+  class BankAccount {
+    public name: string; // Public property for the account holder's name
+    private _balance: number; // Private property to store the account balance
+    readonly id: string; // Readonly property for the unique account ID
+
+    constructor(name: string, initialBalance: number) {
+      this.name = name;
+      this._balance = initialBalance;
+      this.id = this.generateUniqueId();
+    }
+
+    // Function to add balance
+    addBalance(amount: number): void {
+      if (amount <= 0) {
+        console.log("Amount must be greater than zero.");
+        return;
+      }
+      this._balance += amount;
+      console.log(`Balance successfully added. New balance: $${this._balance}`);
+    }
+
+    // Function to see balance
+    seeBalance(): void {
+      console.log(`Current balance: $${this._balance}`);
+    }
+
+    // Function to withdraw balance
+    withdrawBalance(amount: number): void {
+      if (amount <= 0) {
+        console.log("Amount must be greater than zero.");
+        return;
+      }
+      if (amount > this._balance) {
+        console.log("Insufficient balance.");
+        return;
+      }
+      this._balance -= amount;
+      console.log(
+        `Withdrawal successful. Remaining balance: $${this._balance}`
+      );
+    }
+
+    // Private method to generate a unique ID
+    private generateUniqueId(): string {
+      return `ID-${Math.random().toString(36).substr(2, 9).toUpperCase()}`;
+    }
+  }
+
+  // Example usage
+  const account = new BankAccount("John Doe", 1000);
+  console.log(`Account created for ${account.name} with ID: ${account.id}`);
+
+  account.seeBalance(); // Check initial balance
+  account.addBalance(500); // Add $500
+  account.withdrawBalance(300); // Withdraw $300
+  account.withdrawBalance(1500); // Attempt to withdraw more than the balance
+  account.seeBalance(); // Final balance
 }
