@@ -74,3 +74,64 @@
   max.mobileModel();
   max.status();
 }
+
+{
+  // Instance
+
+  class Animal {
+    name: string;
+    species: string;
+
+    constructor(name: string, species: string) {
+      this.name = name;
+      this.species = species;
+    }
+
+    makeSound(): void {
+      console.log(`${this.name} the ${this.species} makes a sound.`);
+    }
+  }
+
+  // Child Dog class
+  class Dog extends Animal {
+    constructor(name: string) {
+      super(name, "Dog");
+    }
+
+    makeBark(): void {
+      console.log(`${this.name} barks: Woof! Woof!`);
+    }
+  }
+
+  // Child Cat class
+  class Cat extends Animal {
+    constructor(name: string) {
+      super(name, "Cat");
+    }
+
+    makeMew(): void {
+      console.log(`${this.name} meows: Meow! Meow!`);
+    }
+  }
+
+  const dog = new Dog("Buddy");
+  dog.makeSound();
+  dog.makeBark();
+
+  const cat = new Cat("Kitty");
+  cat.makeSound();
+  cat.makeMew();
+
+  const getAnimal = (animal: Animal) => {
+    if (animal instanceof Dog) {
+      console.log("It's a dog");
+      animal.makeBark();
+    } else if (animal instanceof Cat) {
+      animal.makeMew();
+      console.log("It's a cat");
+    }
+  };
+}
+
+{
+}
