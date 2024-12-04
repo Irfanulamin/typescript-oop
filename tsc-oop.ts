@@ -258,3 +258,96 @@
   const animals = [new Dog(), new Cat(), new Animal()];
   animals.forEach((animal) => animal.makeSound());
 }
+
+{
+  // interface
+  interface TVehicle {
+    startEngine(): void;
+    stopEngine(): void;
+    move(): void;
+  }
+
+  class Car implements TVehicle {
+    startEngine(): void {
+      console.log("Car is Starting.");
+    }
+    stopEngine(): void {
+      console.log("Car is Stoping.");
+    }
+    move(): void {
+      console.log("Car is Moving.");
+    }
+    test(): void {
+      console.log("Testing.");
+    }
+  }
+
+  const Toyata = new Car();
+  Toyata.startEngine();
+  Toyata.stopEngine();
+  Toyata.move();
+  Toyata.test();
+}
+{
+  abstract class Vehicle {
+    abstract startEngine(): void;
+    abstract stopEngine(): void;
+    abstract move(): void;
+
+    // You can add common functionality here, which will be shared by all vehicles
+    fuelEfficiency(): void {
+      console.log("Fuel efficiency check.");
+    }
+  }
+
+  class Car extends Vehicle {
+    startEngine(): void {
+      console.log("Car is Starting.");
+    }
+
+    stopEngine(): void {
+      console.log("Car is Stopping.");
+    }
+
+    move(): void {
+      console.log("Car is Moving.");
+    }
+
+    test(): void {
+      console.log("Testing Car functionality.");
+    }
+  }
+
+  const toyota = new Car();
+  toyota.startEngine(); // Output: Car is Starting.
+  toyota.stopEngine(); // Output: Car is Stopping.
+  toyota.move(); // Output: Car is Moving.
+  toyota.test(); // Output: Testing Car
+}
+
+{
+  // encapsulation
+  class Car {
+    private engineStatus: string = "Off"; // private property
+
+    startEngine(): void {
+      this.engineStatus = "On";
+      console.log("Engine started.");
+    }
+
+    stopEngine(): void {
+      this.engineStatus = "Off";
+      console.log("Engine stopped.");
+    }
+
+    // Getter for private property
+    getEngineStatus(): string {
+      return this.engineStatus;
+    }
+  }
+
+  const car = new Car();
+  car.startEngine(); // Output: Engine started.
+  console.log(car.getEngineStatus()); // Output: On
+  car.stopEngine(); // Output: Engine stopped.
+}
