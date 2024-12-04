@@ -28,4 +28,49 @@
 
   irfan.status();
   imdad.status();
+
+  // In-heritance
+
+  class PersonWithLaptop extends Person {
+    constructor(
+      public person_name: string,
+      public person_age: number,
+      public isActive: boolean,
+      public laptop_model: string
+    ) {
+      super(person_name, person_age, isActive);
+      this.laptop_model = laptop_model;
+    }
+
+    laptopModel() {
+      console.log(`${this.person_name} have ${this.laptop_model} laptop`);
+    }
+  }
+
+  const john = new PersonWithLaptop("John", 24, false, "XYZ");
+
+  john.laptopModel();
+  john.status();
+
+  // In-heritance
+
+  class PersonWithMobile extends Person {
+    constructor(
+      public person_name: string,
+      public person_age: number,
+      public isActive: boolean,
+      public phone_model: string
+    ) {
+      super(person_name, person_age, isActive);
+      this.phone_model = phone_model;
+    }
+    mobileModel() {
+      console.log(`${this.person_name} have ${this.phone_model} phone`);
+    }
+  }
+
+  const max = new PersonWithMobile("MAX", 19, true, "IPHONE 11");
+
+  max.mobileModel();
+  max.status();
 }
