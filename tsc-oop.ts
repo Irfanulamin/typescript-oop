@@ -192,3 +192,45 @@
   account.withdrawBalance(1500); // Attempt to withdraw more than the balance
   account.seeBalance(); // Final balance
 }
+
+{
+  // getter and setter
+  class BankAccount {
+    private readonly _id: number;
+    public name: string;
+    protected _balance: number;
+
+    constructor(id: number, name: string, balance: number) {
+      this._id = id;
+      this.name = name;
+      this._balance = balance;
+    }
+
+    get id(): number {
+      return this._id;
+    }
+
+    get balance(): number {
+      return this._balance;
+    }
+
+    set addbalance(amount: number) {
+      this._balance = this._balance + amount;
+    }
+  }
+}
+
+{
+  // Static
+  class Counter {
+    static value: number = 0;
+
+    static increment(): void {
+      Counter.value++;
+    }
+
+    static decrement(): void {
+      Counter.value--;
+    }
+  }
+}
