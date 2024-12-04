@@ -234,3 +234,27 @@
     }
   }
 }
+
+{
+  // Polymorphism
+  class Animal {
+    makeSound() {
+      console.log("Some generic animal sound");
+    }
+  }
+
+  class Dog extends Animal {
+    makeSound() {
+      console.log("Bark");
+    }
+  }
+
+  class Cat extends Animal {
+    makeSound() {
+      console.log("Meow");
+    }
+  }
+
+  const animals = [new Dog(), new Cat(), new Animal()];
+  animals.forEach((animal) => animal.makeSound());
+}
